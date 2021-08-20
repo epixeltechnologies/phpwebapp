@@ -1,0 +1,17 @@
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteEngine On
+RewriteBase /phpwebapp
+
+RewriteRule ^/$  index.php?url=$1 [L]
+RewriteRule ^company/create$  create_company.php?url=$1 [L]
+RewriteRule ^company/edit/([0-9]+)$  edit_company.php?cid=$1 [L]
+RewriteRule ^company/delete/([0-9]+)$  delete_company.php?cid=$1 [L]
+RewriteRule ^company/employees/([0-9]+)$  employees.php?cid=$1 [L]
+
+RewriteRule ^company/([0-9]+)/employees/add$  create_employee.php?cid=$1 [L]
+RewriteRule ^company/([0-9]+)/employees/edit/([0-9]+)$  edit_employee.php?cid=$1&eid=$2 [L]
+RewriteRule ^company/([0-9]+)/employees/delete/([0-9]+)$  delete_employee.php?cid=$1&eid=$2 [L]
+
+#RewriteRule ^(.*)$  /index.php?url=$1 [L]
